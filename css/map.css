@@ -43,9 +43,10 @@ body {
   top: 0;
   bottom: 0;
   overflow-y: auto;
-  background: white;
+  background: #072146;
   padding: 0.5em;
   box-sizing: border-box;
+  color: #fff;
 }
 
 @media only screen and (max-width: 876px) {
@@ -84,12 +85,21 @@ body {
 
 #locations-panel-list .search-input input {
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3em;
   height: 2.2em;
+  background: #004481;
   box-sizing: border-box;
-  padding: 0 2.5em 0 1em;
+  padding: 0 0 0 0.5em;
   font-size: 1em;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 0.1rem #fff;
+  color: #fff;
+  outline: none;
+}
+
+#locations-panel-list .search-input input::placeholder {
+  color: #fff;
 }
 
 #locations-panel-list .search-input-overlay {
@@ -97,18 +107,17 @@ body {
 }
 
 #locations-panel-list .search-input-overlay.search {
-  right: 2px;
-  top: 2px;
-  bottom: 2px;
-  width: 2.4em;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 2.5rem;
 }
 
 #locations-panel-list .search-input-overlay.search button {
   width: 100%;
   height: 100%;
-  border-radius: 0.2em;
-  color: black;
-  background: transparent;
+  background: #1973b8;
+  outline: none;
 }
 
 #locations-panel-list .search-input-overlay.search .icon {
@@ -184,4 +193,5 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  border-top: 1px solid #004481;
 }
