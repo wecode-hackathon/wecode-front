@@ -333,7 +333,7 @@
               return getLocationDistance(a) - getLocationDistance(b);
             });
           } else {
-            sectionNameEl.textContent = `All locations (${locations.length})`;
+            sectionNameEl.textContent = `Oficinas (${locations.length})`;
           }
           const resultItemContext = { locations: locations };
           resultsContainerEl.innerHTML = itemsTemplate(resultItemContext);
@@ -548,7 +548,15 @@
     </script>
     <script>
       const CONFIGURATION = {
-        locations: [],
+        locations: [
+          {
+            title: "BBVA San Isidro",
+            address1: "Av. República de Panamá 3055",
+            address2: "San Isidro 15036, Perú",
+            coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
+            placeId: "ChIJuxBAX_XIBZERkfsMUQ9gCFg",
+          },
+        ],
         mapOptions: {
           center: { lat: 38.0, lng: -100.0 },
           fullscreenControl: true,
@@ -625,16 +633,11 @@
       <div id="locations-panel">
         <div id="locations-panel-list">
           <header>
-            <h1 class="search-title">
-              <img
-                src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg"
-              />
-              Find a location near you
-            </h1>
+            <h1 class="search-title">Encuentra tu oficina ideal</h1>
             <div class="search-input">
               <input
                 id="location-search-input"
-                placeholder="Enter your address or zip code"
+                placeholder="Introduce tu búsqueda"
               />
               <div
                 id="search-overlay-search"
@@ -650,9 +653,7 @@
               </div>
             </div>
           </header>
-          <div class="section-name" id="location-results-section-name">
-            All locations
-          </div>
+          <div class="section-name" id="location-results-section-name"></div>
           <div class="results">
             <ul id="location-results-list"></ul>
           </div>
