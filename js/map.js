@@ -69,6 +69,13 @@ function LocatorPlus(configuration) {
       position: location.coords,
       map: locator.map,
       title: location.title,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 13,
+        fillColor: "#004481",
+        fillOpacity: 1,
+        strokeOpacity: 0,
+      },
     });
     marker.addListener("click", function () {
       selectResultItem(index, false, true);
@@ -119,13 +126,12 @@ function LocatorPlus(configuration) {
       locations[i].index = i;
     }
     if (locator.searchLocation) {
-      sectionNameEl.textContent =
-        "Nearest locations (" + locations.length + ")";
+      sectionNameEl.textContent = "Oficinas (" + locations.length + ")";
       locations.sort(function (a, b) {
         return getLocationDistance(a) - getLocationDistance(b);
       });
     } else {
-      sectionNameEl.textContent = `All locations (${locations.length})`;
+      sectionNameEl.textContent = `Oficinas (${locations.length})`;
     }
     const resultItemContext = { locations: locations };
     resultsContainerEl.innerHTML = itemsTemplate(resultItemContext);
@@ -196,7 +202,7 @@ function initializeSearchInput(locator) {
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 12,
-        fillColor: "#3367D6",
+        fillColor: "#000000",
         fillOpacity: 0.5,
         strokeOpacity: 0,
       },
