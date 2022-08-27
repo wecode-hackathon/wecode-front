@@ -673,7 +673,6 @@
     </script>
   </head>
   <body>
-    <header>
       <div id="London" class="tabcontent">
         <h1>London</h1>
         <p>London is the capital city of England.</p>
@@ -698,13 +697,10 @@
       <button class="tablink" onclick="openCity('Paris', this, 'green')">Paris</button>
       <button class="tablink" onclick="openCity('Tokyo', this, 'blue')">Tokyo</button>
       <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Oslo</button>
-    </header>
-      
     <div id="map-container">
-     
       <div id="locations-panel">
         <div id="locations-panel-list">
-            
+          <header>
             <h1 class="search-title">
               <img
                 src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg"
@@ -729,6 +725,7 @@
                 </button>
               </div>
             </div>
+          </header>
           <div class="section-name" id="location-results-section-name">
             All locations
           </div>
