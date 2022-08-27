@@ -17,20 +17,33 @@ body .backgroud--navy {
   height: 88px;
 }
 
+.header__image {
+  height: 40px;
+  margin: 0;
+}
+
+.header__image {
+  height: 20px;
+  width: auto;
+  will-change: height;
+  margin: 0 auto;
+  -webkit-transition: height .33333s;
+  transition: height .33333s;
+  max-width: none;
+  display: inline-block;
+}
+
 .header__wrapper {
   width: auto;
 }
 
-.header__wrapper {
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.wrapper__bbva {
   width: 100%;
   float: left;
+  height: 88px;
 }
 
-.header__logo {
+.logo__bbva {
   display: flex;
   -webkit-box-align: center;
   align-items: center;
@@ -40,4 +53,15 @@ body .backgroud--navy {
   transition-duration: 0.33333s;
   transition-timing-function: ease;
   transition-delay: 0s;
+  height: 88px;
+  width: auto;
+}
+
+.logo__link {
+  height: 88px;
+  width: auto;
+}
+a {
+  color: #1973b8;
+  text-decoration: none;
 }
