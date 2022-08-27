@@ -47,7 +47,7 @@ body {
   padding: 0.5em;
   box-sizing: border-box;
   color: #fff;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(0, 255, 255, 0.3);
 }
 
 @media only screen and (max-width: 876px) {
@@ -94,7 +94,7 @@ body {
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: solid 0.1rem #fff;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
   color: #fff;
   outline: none;
 }
@@ -135,20 +135,12 @@ body {
 #locations-panel-list .location-result {
   position: relative;
   padding: 0.8em 3.5em 0.8em 1.4em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   cursor: pointer;
-}
-
-#locations-panel-list .location-result:first-of-type {
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-#locations-panel-list .location-result:last-of-type {
-  border-bottom: none;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
 }
 
 #locations-panel-list .location-result.selected {
-  outline: 2px solid #4285f4;
+  outline: none;
 }
 
 #locations-panel-list button.select-location {
@@ -178,7 +170,7 @@ body {
 }
 
 #locations-panel-list .directions-button-background {
-  fill: rgba(255, 255, 255, 0.01);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
 }
 
 #locations-panel-list .location-result .distance {

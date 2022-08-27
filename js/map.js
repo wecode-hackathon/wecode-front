@@ -49,6 +49,7 @@ function LocatorPlus(configuration) {
   // Store selection.
   const selectResultItem = function (locationIdx, panToMarker, scrollToResult) {
     locator.selectedLocationIdx = locationIdx;
+
     for (let locationElem of resultsContainerEl.children) {
       locationElem.classList.remove("selected");
       if (getResultIndex(locationElem) === locator.selectedLocationIdx) {
@@ -78,6 +79,7 @@ function LocatorPlus(configuration) {
       },
     });
     marker.addListener("click", function () {
+      console.log("marcador");
       selectResultItem(index, false, true);
     });
     return marker;
@@ -144,6 +146,7 @@ function LocatorPlus(configuration) {
       const resultSelectionHandler = function () {
         if (resultIndex !== locator.selectedLocationIdx) {
           selectResultItem(resultIndex, true, false);
+          console.log("click");
         }
       };
 
@@ -164,9 +167,9 @@ function LocatorPlus(configuration) {
         locator.searchLocation != null ? locator.searchLocation.location : "";
       const destination = locator.locations[resultIndex];
       const googleMapsUrl = generateDirectionsURL(origin, destination);
-      item
-        .querySelector(".directions-button")
-        .setAttribute("href", googleMapsUrl);
+      // item
+      //   .querySelector(".directions-button")
+      //   .setAttribute("href", googleMapsUrl);
     }
   };
 
@@ -254,6 +257,7 @@ function initializeSearchInput(locator) {
 
   // Set up geocoding on the search input.
   searchButtonEl.addEventListener("click", function () {
+    console.log("buscador");
     geocodeSearch(searchInputEl.value.trim());
   });
 
@@ -338,22 +342,7 @@ function initializeDistanceMatrix(locator) {
 }
 
 const CONFIGURATION = {
-  locations: [
-    {
-      title: "BBVA San Isidro",
-      address1: "Av. República de Panamá 3055",
-      address2: "San Isidro 15036, Perú",
-      coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
-      placeId: "ChIJuxBAX_XIBZERkfsMUQ9gCFg",
-    },
-    {
-      title: "BBVA Las Begonias",
-      address1: "C. Las Begonias 425 - 429",
-      address2: "San Isidro 15046, Perú",
-      coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
-      placeId: "ChIJtZLJ8GTIBZERLAavSYwAUJQ",
-    },
-  ],
+  locations: [],
   mapOptions: {
     center: { lat: 38.0, lng: -100.0 },
     fullscreenControl: true,
@@ -376,5 +365,26 @@ const CONFIGURATION = {
 };
 
 function initMap() {
-  new LocatorPlus(CONFIGURATION);
+  console.log(`Latitud ${CONFIGURATION.mapOptions.center.lat}`);
+  console.log(`Longitud ${CONFIGURATION.mapOptions.center.lng}`);
+  setTimeout(() => {
+    CONFIGURATION.locations = [
+      {
+        title: "BBVA San Isidro",
+        address1: "Av. República de Panamá 3055",
+        coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
+        aforo: "20 personas",
+        // color: "#000000",
+      },
+      {
+        title: "BBVA Las Begonias",
+        address1: "C. Las Begonias 425 - 429",
+        coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
+        aforo: "25 personas",
+        // color: "#000000",
+      },
+    ];
+    console.log("llegó data");
+    new LocatorPlus(CONFIGURATION);
+  }, 1000);
 }

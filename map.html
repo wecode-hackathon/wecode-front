@@ -8,21 +8,19 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/handlebars/4.7.7/handlebars.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
-  <link href="locatorplus.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/map.css" />
   <link rel="stylesheet" href="css/bbva.css" />
-  <script src="locatorplus.js"></script>
   <script id="locator-result-items-tmpl" type="text/x-handlebars-template">
       {{#each locations}}
         <li class="location-result" data-location-index="{{index}}">
           <button class="select-location">
-            <h2 class="name">{{title}}</h2>
+            <h2 class="name">{{title}} - {{ aforo }} </h2>
           </button>
           <div class="address">{{address1}}<br />{{address2}}</div>
           {{#if travelDistanceText}}
             <div class="distance">{{travelDistanceText}}</div>
           {{/if}}
-          <a
+          <!-- <a
             class="directions-button"
             href=""
             target="_blank"
@@ -53,7 +51,7 @@
                 stroke="#1967d2"
               ></circle>
             </svg>
-          </a>
+          </a> -->
         </li>
       {{/each}}
     </script>
