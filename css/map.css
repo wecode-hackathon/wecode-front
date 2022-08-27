@@ -5,7 +5,6 @@ body {
   padding: 0;
 }
 
-
 #map-container {
   width: 100%;
   height: 100%;
@@ -41,13 +40,14 @@ body {
   position: absolute;
   left: 0;
   width: 22em;
-  top: 0;
+  top: 88px;
   bottom: 0;
   overflow-y: auto;
   background: #072146;
   padding: 0.5em;
   box-sizing: border-box;
   color: #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 @media only screen and (max-width: 876px) {

@@ -346,6 +346,13 @@ const CONFIGURATION = {
       coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
       placeId: "ChIJuxBAX_XIBZERkfsMUQ9gCFg",
     },
+    {
+      title: "BBVA Las Begonias",
+      address1: "C. Las Begonias 425 - 429",
+      address2: "San Isidro 15046, Perú",
+      coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
+      placeId: "ChIJtZLJ8GTIBZERLAavSYwAUJQ",
+    },
   ],
   mapOptions: {
     center: { lat: 38.0, lng: -100.0 },
