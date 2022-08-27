@@ -48,8 +48,8 @@ function LocatorPlus(configuration) {
 
   // Store selection.
   const selectResultItem = function (locationIdx, panToMarker, scrollToResult) {
+    console.log(locator.locations[locationIdx].title);
     locator.selectedLocationIdx = locationIdx;
-
     for (let locationElem of resultsContainerEl.children) {
       locationElem.classList.remove("selected");
       if (getResultIndex(locationElem) === locator.selectedLocationIdx) {
@@ -79,7 +79,6 @@ function LocatorPlus(configuration) {
       },
     });
     marker.addListener("click", function () {
-      console.log("marcador");
       selectResultItem(index, false, true);
     });
     return marker;
@@ -146,7 +145,6 @@ function LocatorPlus(configuration) {
       const resultSelectionHandler = function () {
         if (resultIndex !== locator.selectedLocationIdx) {
           selectResultItem(resultIndex, true, false);
-          console.log("click");
         }
       };
 
@@ -167,9 +165,9 @@ function LocatorPlus(configuration) {
         locator.searchLocation != null ? locator.searchLocation.location : "";
       const destination = locator.locations[resultIndex];
       const googleMapsUrl = generateDirectionsURL(origin, destination);
-      // item
-      //   .querySelector(".directions-button")
-      //   .setAttribute("href", googleMapsUrl);
+      item
+        .querySelector(".directions-button")
+        .setAttribute("href", googleMapsUrl);
     }
   };
 
@@ -344,7 +342,7 @@ function initializeDistanceMatrix(locator) {
 const CONFIGURATION = {
   locations: [],
   mapOptions: {
-    center: { lat: 38.0, lng: -100.0 },
+    center: { lat: 0, lng: 0 },
     fullscreenControl: true,
     mapTypeControl: false,
     streetViewControl: false,
@@ -364,27 +362,49 @@ const CONFIGURATION = {
   },
 };
 
+function consult() {
+  console.log("hola");
+  fetch(
+    "http://127.0.0.1:5001/api/admin/suscripcion/seguimiento/declaracionSaludInicio/1779",
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log("ya");
+      CONFIGURATION.locations = [
+        {
+          title: "BBVA San Isidro",
+          address1: "Av. República de Panamá 3055",
+          coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
+          aforo: "20 personas",
+          // color: "#000000",
+        },
+        {
+          title: "BBVA Las Begonias",
+          address1: "C. Las Begonias 425 - 429",
+          coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
+          aforo: "25 personas",
+          // color: "#FF0000",
+        },
+      ];
+      new LocatorPlus(CONFIGURATION);
+      // setTimeout(() => {
+      //   CONFIGURATION.locations = [];
+      // }, 1000);
+    })
+    .catch((error) => console.warn(error));
+}
+
 function initMap() {
-  console.log(`Latitud ${CONFIGURATION.mapOptions.center.lat}`);
-  console.log(`Longitud ${CONFIGURATION.mapOptions.center.lng}`);
-  setTimeout(() => {
-    CONFIGURATION.locations = [
-      {
-        title: "BBVA San Isidro",
-        address1: "Av. República de Panamá 3055",
-        coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
-        aforo: "20 personas",
-        // color: "#000000",
-      },
-      {
-        title: "BBVA Las Begonias",
-        address1: "C. Las Begonias 425 - 429",
-        coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
-        aforo: "25 personas",
-        // color: "#FF0000",
-      },
-    ];
-    console.log("llegó data");
-    new LocatorPlus(CONFIGURATION);
-  }, 2000);
+  consult();
+  setInterval(() => {
+    consult();
+  }, 30000);
+
+  // new LocatorPlus(CONFIGURATION);
 }
