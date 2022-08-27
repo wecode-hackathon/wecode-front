@@ -381,10 +381,10 @@ function initMap() {
         address1: "C. Las Begonias 425 - 429",
         coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
         aforo: "25 personas",
-        // color: "#000000",
+        // color: "#FF0000",
       },
     ];
     console.log("llegó data");
     new LocatorPlus(CONFIGURATION);
-  }, 1000);
+  }, 2000);
 }

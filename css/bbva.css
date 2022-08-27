@@ -8,8 +8,12 @@ body .backgroud--navy {
   margin: 35px;
 }
 
-.icono-volver{
-  
+.volver {
+  outline: none;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #fff;
 }
 
 .header__container {
@@ -36,8 +40,8 @@ body .backgroud--navy {
   width: auto;
   will-change: height;
   margin: 0 auto;
-  -webkit-transition: height .33333s;
-  transition: height .33333s;
+  -webkit-transition: height 0.33333s;
+  transition: height 0.33333s;
   max-width: none;
   display: inline-block;
 }
