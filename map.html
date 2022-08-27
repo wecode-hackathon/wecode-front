@@ -55,61 +55,64 @@
         </li>
       {{/each}}
     </script>
-  </head>
-  <body>
-    <nav class="header__container backgroud--navy"
+</head>
+
+<body>
+  <nav class="header__container backgroud--navy"
     aria-label="BBVA Perú: Tarjetas, Cuentas, Préstamos, Inversiones, Créditos, Seguros">
     <div class="header__main container">
       <div class="header__wrapper">
         <div class="header__logo">
-          <a href="https://www.bbva.pe/"><img src="./img/Logo_BBVA_blanco.svg" alt="logo-bbva"></a>
-
+          <a href="https://www.bbva.pe/"><img src="./img/Logo_BBVA_blanco.svg" alt="logo-bbva" height="60px" width="300px" style="margin-left: 5px; margin-top: 15px"></a>
+          <span class="spacer"><button><a href=""><i class=""> Salir</i></a></button></span>
         </div>
+        
       </div>
     </div>
   </nav>
-    <div id="map-container">
-      <div id="locations-panel">
-        <div id="locations-panel-list">
-          <header>
-            <div class="search-input">
-              <input
-                id="location-search-input"
-                placeholder="Introduce tu búsqueda"
-              />
-              <div
-                id="search-overlay-search"
-                class="search-input-overlay search"
-              >
-                <button id="location-search-button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 260 260"
-                    height="20px"
-                    width="20px"
-                  >
-                    <defs>
-                      <style>
-                        .bbvaicn {
-                          fill: #fff;
-                        }
-                      </style>
-                    </defs>
-                    <path
-                      class="bbvaicn"
-                      d="M182.85 162.85a90 90 0 1 0-20 20L220 240l20-20zM150 110a40 40 0 0 0-40-40V50a60 60 0 0 1 60 60z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
+  <div id="map-container">
+    <div id="locations-panel">
+      <div id="locations-panel-list">
+        <header>
+          <div class="search-input">
+            <input id="location-search-input" placeholder="Introduce tu búsqueda" />
+            <div id="search-overlay-search" class="search-input-overlay search">
+              <button id="location-search-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" height="20px" width="20px">
+                  <defs>
+                    <style>
+                      .bbvaicn {
+                        fill: #fff;
+                      }
+                    </style>
+                  </defs>
+                  <path class="bbvaicn"
+                    d="M182.85 162.85a90 90 0 1 0-20 20L220 240l20-20zM150 110a40 40 0 0 0-40-40V50a60 60 0 0 1 60 60z">
+                  </path>
+                </svg>
+              </button>
             </div>
-          </header>
-          <div class="section-name" id="location-results-section-name"></div>
-          <div class="results">
-            <ul id="location-results-list"></ul>
           </div>
         </header>
-
+        <div class="section-name" id="location-results-section-name"></div>
+        <div class="results">
+          <ul id="location-results-list"></ul>
+        </div>
+        </header>
+        <div class="section-name" id="location-results-section-name">
+          All locations
+        </div>
+        <div class="results">
+          <ul id="location-results-list"></ul>
+        </div>
+        <div >
+          <div class="wrapper__bbva">
+            <div class="logo__bbva">
+              <a href="https://www.bbva.pe/" class="logo__link"><img src="./img/Logo_BBVA_blanco.svg" alt="logo-bbva"></a>
+    
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="gmp-map"></div>
