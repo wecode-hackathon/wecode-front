@@ -363,7 +363,7 @@ const CONFIGURATION = {
 };
 
 function consult() {
-  console.log("hola");
+  console.log("consultando");
   fetch(
     "http://127.0.0.1:5001/api/admin/suscripcion/seguimiento/declaracionSaludInicio/1779",
     {
@@ -375,7 +375,7 @@ function consult() {
   )
     .then((response) => response.json())
     .then((responseData) => {
-      console.log("ya");
+      console.log("llegó data");
       CONFIGURATION.locations = [
         {
           title: "BBVA San Isidro",
@@ -393,18 +393,34 @@ function consult() {
         },
       ];
       new LocatorPlus(CONFIGURATION);
-      // setTimeout(() => {
-      //   CONFIGURATION.locations = [];
-      // }, 1000);
     })
     .catch((error) => console.warn(error));
 }
 
 function initMap() {
-  consult();
-  setInterval(() => {
-    consult();
-  }, 30000);
+  // consult();
+  // setInterval(() => {
+  //   consult();
+  // }, 30000);
+
+  CONFIGURATION.locations = [
+    {
+      title: "BBVA San Isidro",
+      address1: "Av. República de Panamá 3055",
+      coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
+      aforo: "20 personas",
+      // color: "#000000",
+    },
+    {
+      title: "BBVA Las Begonias",
+      address1: "C. Las Begonias 425 - 429",
+      coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
+      aforo: "25 personas",
+      // color: "#FF0000",
+    },
+  ];
+
+  new LocatorPlus(CONFIGURATION);
 
   // new LocatorPlus(CONFIGURATION);
 }
