@@ -16,6 +16,20 @@ function generateDirectionsURL(origin, destination) {
   return googleMapsUrlBase + searchParams.toString();
 }
 
+    // alert(locator.locations[locationIdx].title);
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+  
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
 /**
  * Defines an instance of the Locator+ solution, to be instantiated
  * when the Maps library is loaded.
@@ -63,8 +77,20 @@ function LocatorPlus(configuration) {
       locator.map.panTo(locator.locations[locationIdx].coords);
     }
 
-    alert(locator.locations[locationIdx].title);
+    var textModal = document.getElementById("text-modal");
+
+    textModal.innerHTML = locator.locations[locationIdx].title;
+
+    // When the user clicks the button, open the modal 
+    modal.style.display = "block";
+
+    // mostrarModal();
   };
+
+  //Mostrar Modal
+  // const mostrarModal = function (data) {
+
+  // }
 
   // Create a marker for each location.
   const markers = locator.locations.map(function (location, index) {
