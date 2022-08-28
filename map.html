@@ -14,7 +14,7 @@
       {{#each locations}}
         <li class="location-result" data-location-index="{{index}}">
           <button class="select-location">
-            <h2 class="name">{{title}} - {{ aforo }} </h2>
+            <h2 class="name">{{title}} - {{ cantPersonas }} Personas </h2>
           </button>
           <div class="address">{{address1}}<br />{{address2}}</div>
           {{#if travelDistanceText}}
@@ -107,7 +107,7 @@
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p id="text-modal"></p>
+      <div id="text-modal"></div>
     </div>
     
   </div>

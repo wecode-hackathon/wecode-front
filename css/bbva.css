@@ -13,21 +13,28 @@ body .backgroud--navy {
   display: none;
   position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 35%;
-  bottom: 50px;
-  width: 30%; /* Full width */
+  left: 40%;
+  bottom: 30px;
+  width: 25%; /* Full width */
   height: 150px; /* Full height */
+  padding: 0 1rem;
   background-color: #fefefe;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
 }
 
 /* Modal Content */
 .modal-content {
   width: 100%;
   height: 100%;
+  padding-top: 1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: gray;
 }
 
-p {
-  text-align: center;
+.modal-content h3 {
+  color: #1973b8;
+  font-weight: 500;
+  margin: 0;
 }
 
 /* The Close Button */
@@ -36,8 +43,6 @@ p {
   float: right;
   font-size: 28px;
   font-weight: bold;
-  margin-right: 1rem;
-  margin-top: -0.5rem;
 }
 
 .close:hover,

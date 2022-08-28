@@ -79,7 +79,21 @@ function LocatorPlus(configuration) {
 
     var textModal = document.getElementById("text-modal");
 
-    textModal.innerHTML = locator.locations[locationIdx].title;
+    textModal.innerHTML =
+      "<h3>" +
+      locator.locations[locationIdx].title +
+      " - " +
+      locator.locations[locationIdx].cantPersonas +
+      " Personas" +
+      "</h3>" +
+      "<br>";
+    textModal.innerHTML += locator.locations[locationIdx].address1 + "<br/>";
+    textModal.innerHTML +=
+      locator.locations[locationIdx].cantVentanilla +
+      " en ventanilla (12 minutos de espera) <br/>";
+    textModal.innerHTML +=
+      locator.locations[locationIdx].cantPlataforma +
+      " en plataforma (20 minutos de espera) <br/>";
 
     // When the user clicks the button, open the modal
     modal.style.display = "block";
@@ -100,8 +114,13 @@ function LocatorPlus(configuration) {
       title: location.title,
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
-        scale: 13,
-        fillColor: "#004481",
+        scale: 16,
+        fillColor:
+          location.estado == 0
+            ? "#08a500"
+            : location.estado == 1
+            ? "#de8000"
+            : "#e80700",
         fillOpacity: 1,
         strokeOpacity: 0,
       },
@@ -392,73 +411,36 @@ const CONFIGURATION = {
 
 function consult() {
   console.log("consultando");
-  fetch(
-    "http://127.0.0.1:5001/api/admin/suscripcion/seguimiento/declaracionSaludInicio/1779",
-    {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }
-  )
+  fetch("https://retoolapi.dev/FhUVHv/data", {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
     .then((response) => response.json())
     .then((responseData) => {
-      console.log("llegó data");
-      CONFIGURATION.locations = [
-        {
-          title: "BBVA San Isidro",
-          address1: "Av. República de Panamá 3055",
-          coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
-          aforo: "20 personas",
-          // color: "#000000",
-        },
-        {
-          title: "BBVA Las Begonias",
-          address1: "C. Las Begonias 425 - 429",
-          coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
-          aforo: "25 personas",
-          // color: "#FF0000",
-        },
-      ];
+      for (const d of responseData) {
+        CONFIGURATION.locations.push({
+          id: d.id,
+          estado: d.estado,
+          title: d.direccion,
+          address1: d.direccion,
+          cantPersonas: d.cantPersonas,
+          cantPlataforma: d.cantPlataforma,
+          cantVentanilla: d.cantVentanilla,
+          coords: {
+            lat: Math.random() * 360 - 180,
+            lng: Math.random() * 360 - 180,
+          },
+        });
+      }
+
       new LocatorPlus(CONFIGURATION);
     })
     .catch((error) => console.warn(error));
 }
 
 function initMap() {
-  // consult();
-  setInterval(() => {
-    if (navigator.geolocation) {
-      var success = function (position) {
-        let latitud = position.coords.latitude,
-          longitud = position.coords.longitude;
-        // console.log(latitud);
-        // console.log(longitud);
-      };
-      navigator.geolocation.getCurrentPosition(success, function (msg) {
-        console.error(msg);
-      });
-    }
-  }, 2000);
-
-  CONFIGURATION.locations = [
-    {
-      title: "BBVA San Isidro",
-      address1: "Av. República de Panamá 3055",
-      coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
-      aforo: "20 personas",
-      // color: "#000000",
-    },
-    {
-      title: "BBVA Las Begonias",
-      address1: "C. Las Begonias 425 - 429",
-      coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
-      aforo: "25 personas",
-      // color: "#FF0000",
-    },
-  ];
-
-  new LocatorPlus(CONFIGURATION);
-
-  // new LocatorPlus(CONFIGURATION);
+  consult();
+  setInterval(() => {}, 2000);
 }
