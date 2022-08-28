@@ -11,23 +11,28 @@ body .backgroud--navy {
 /* The Modal (background) */
 .modal {
   display: none;
-  position: absolute; /* Stay in place */
+  position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 35%;
-  bottom: 50px;
-  width: 30%; /* Full width */
-  height: 150px; /* Full height */
-  background-color: #fefefe;
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  align-items: flex-end;
+  
 }
 
 /* Modal Content */
 .modal-content {
-  width: 100%;
-  height: 100%;
-}
-
-p {
-  text-align: center;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%;
+  top: 70%;
+  left: 40%;
+  position: absolute;
 }
 
 /* The Close Button */
@@ -36,8 +41,6 @@ p {
   float: right;
   font-size: 28px;
   font-weight: bold;
-  margin-right: 1rem;
-  margin-top: -0.5rem;
 }
 
 .close:hover,
@@ -95,6 +98,8 @@ p {
   float: left;
   height: 88px;
 }
+
+
 
 .logo__bbva {
   display: flex;

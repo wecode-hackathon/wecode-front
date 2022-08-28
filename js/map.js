@@ -79,8 +79,14 @@ function LocatorPlus(configuration) {
 
     var textModal = document.getElementById("text-modal");
 
-    textModal.innerHTML = locator.locations[locationIdx].title;
-
+    textModal.innerHTML = locator.locations[locationIdx].title + "<hr>";
+    textModal.innerHTML += locator.locations[locationIdx].address1 + "<br/>";
+    textModal.innerHTML += locator.locations[locationIdx].cantPersonas + " Personas <br/>";
+    textModal.innerHTML += locator.locations[locationIdx].cantClientes + " Clientes <br/>";
+    textModal.innerHTML += locator.locations[locationIdx].cantNoClientes + " No clientes <br/>";
+    textModal.innerHTML += locator.locations[locationIdx].cantVentanilla + " En ventanilla <br/>";
+    textModal.innerHTML += locator.locations[locationIdx].cantPlataforma + " En plataforma <br/>";
+    
     // When the user clicks the button, open the modal 
     modal.style.display = "block";
 
@@ -433,17 +439,29 @@ function initMap() {
 
   CONFIGURATION.locations = [
     {
+      id: 1,
       title: "BBVA San Isidro",
       address1: "Av. República de Panamá 3055",
       coords: { lat: -12.093568745989225, lng: -77.02118792209015 },
-      aforo: "20 personas",
+      cantPersonas: 20,
+      cantClientes: 10,
+      cantNoClientes: 5,
+      cantVentanilla: 12,
+      catPlataforma: 8,
+      cantExternos: 5
       // color: "#000000",
     },
     {
+      id: 2,
       title: "BBVA Las Begonias",
       address1: "C. Las Begonias 425 - 429",
       coords: { lat: -12.09257812276688, lng: -77.02414703558195 },
-      aforo: "25 personas",
+      cantPersonas: 25,
+      cantClientes: 15,
+      cantNoClientes: 5,
+      cantVentanilla: 10,
+      cantPlataforma: 3,
+      cantExternos: 5
       // color: "#FF0000",
     },
   ];
