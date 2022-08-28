@@ -419,18 +419,19 @@ function consult() {
   })
     .then((response) => response.json())
     .then((responseData) => {
-      for (const d of responseData) {
+      CONFIGURATION.locations = [];
+      for (const d of bancos) {
         CONFIGURATION.locations.push({
           id: d.id,
           estado: d.estado,
-          title: d.direccion,
+          title: d.nombre,
           address1: d.direccion,
-          cantPersonas: d.cantPersonas,
+          cantPersonas: d.aforoActual,
           cantPlataforma: d.cantPlataforma,
           cantVentanilla: d.cantVentanilla,
           coords: {
-            lat: Math.random() * 360 - 180,
-            lng: Math.random() * 360 - 180,
+            lat: d.latOficina,
+            lng: d.longOficina,
           },
         });
       }
@@ -440,7 +441,117 @@ function consult() {
     .catch((error) => console.warn(error));
 }
 
+const bancos = [
+  {
+    id: 1,
+    nombre: "CAMINO REAL",
+    direccion: "AV. CAMINO REAL 355",
+    idEstado: 0,
+    idProvincia: 0,
+    idPais: 0,
+    aforoTotal: 0,
+    aforoActual: 35,
+    estado: 0,
+    esperaPlataforma: 0,
+    esperaVentanilla: 0,
+    latOficina: -12.097156393531519,
+    longOficina: -77.03612165197502,
+  },
+  {
+    id: 2,
+    nombre: "C.C. SAN ISIDRO",
+    direccion: "AV. RIVERA NAVARRETE N° 815",
+    idEstado: 0,
+    idProvincia: 0,
+    idPais: 0,
+    aforoTotal: 0,
+    aforoActual: 0,
+    estado: 0,
+    esperaPlataforma: 0,
+    esperaVentanilla: 0,
+    latOficina: -12.095092312802052,
+    longOficina: -77.02618734492259,
+  },
+  {
+    id: 6,
+    nombre: "JORGE BASADRE",
+    direccion: "JORGE BASADRE 487",
+    idEstado: 0,
+    idProvincia: 0,
+    idPais: 0,
+    aforoTotal: 0,
+    aforoActual: 0,
+    estado: 0,
+    esperaPlataforma: 0,
+    esperaVentanilla: 0,
+    latOficina: -12.09476213184221,
+    longOficina: -77.03749148208638,
+  },
+  {
+    id: 8,
+    nombre: "PETIT THOUARS",
+    direccion: "AV. PETIT THOUARS N° 2790 ESQ. JR. PERCY GIBSON",
+    idEstado: 0,
+    idProvincia: 0,
+    idPais: 0,
+    aforoTotal: 0,
+    aforoActual: 0,
+    estado: 1,
+    esperaPlataforma: 0,
+    esperaVentanilla: 0,
+    latOficina: -12.090902735799261,
+    longOficina: -77.0325035910043,
+  },
+  {
+    id: 9,
+    nombre: "AV. CENTRAL",
+    direccion: "AV. BASADRE 133",
+    idEstado: 0,
+    idProvincia: 0,
+    idPais: 0,
+    aforoTotal: 0,
+    aforoActual: 0,
+    estado: 2,
+    esperaPlataforma: 0,
+    esperaVentanilla: 0,
+    latOficina: -12.094875955343744,
+    longOficina: -77.03747295554199,
+  },
+  {
+    id: 10,
+    nombre: "LOS ROBLES",
+    direccion: "AV. DOS DE MAYO 1198",
+    idEstado: 0,
+    idProvincia: 0,
+    idPais: 0,
+    aforoTotal: 0,
+    aforoActual: 0,
+    estado: 0,
+    esperaPlataforma: 0,
+    esperaVentanilla: 0,
+    latOficina: -12.091665165027399,
+    longOficina: -77.0429241316625,
+  },
+  {
+    id: 13,
+    nombre: "CONQUISTADORES",
+    direccion: "AV. CONQUISTADORES 1099",
+    idEstado: 0,
+    idProvincia: 0,
+    idPais: 0,
+    aforoTotal: 0,
+    aforoActual: 0,
+    estado: 0,
+    esperaPlataforma: 0,
+    esperaVentanilla: 0,
+    latOficina: -12.10701123395324,
+    longOficina: -77.0370306640618,
+  },
+];
+
 function initMap() {
   consult();
-  setInterval(() => {}, 2000);
+  setInterval(() => {
+    consult();
+  }, 60000);
 }
