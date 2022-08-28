@@ -62,6 +62,8 @@ function LocatorPlus(configuration) {
     if (panToMarker && locationIdx != null) {
       locator.map.panTo(locator.locations[locationIdx].coords);
     }
+
+    alert(locator.locations[locationIdx].title);
   };
 
   // Create a marker for each location.
