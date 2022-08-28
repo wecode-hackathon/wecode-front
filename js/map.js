@@ -16,19 +16,19 @@ function generateDirectionsURL(origin, destination) {
   return googleMapsUrlBase + searchParams.toString();
 }
 
-    // alert(locator.locations[locationIdx].title);
-    // Get the modal
-    var modal = document.getElementById("myModal");
+// alert(locator.locations[locationIdx].title);
+// Get the modal
+var modal = document.getElementById("myModal");
 
-    // Get the button that opens the modal
+// Get the button that opens the modal
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-  
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-      modal.style.display = "none";
-    }
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
 
 /**
  * Defines an instance of the Locator+ solution, to be instantiated
@@ -81,7 +81,7 @@ function LocatorPlus(configuration) {
 
     textModal.innerHTML = locator.locations[locationIdx].title;
 
-    // When the user clicks the button, open the modal 
+    // When the user clicks the button, open the modal
     modal.style.display = "block";
 
     // mostrarModal();
@@ -427,9 +427,19 @@ function consult() {
 
 function initMap() {
   // consult();
-  // setInterval(() => {
-  //   consult();
-  // }, 30000);
+  setInterval(() => {
+    if (navigator.geolocation) {
+      var success = function (position) {
+        let latitud = position.coords.latitude,
+          longitud = position.coords.longitude;
+        // console.log(latitud);
+        // console.log(longitud);
+      };
+      navigator.geolocation.getCurrentPosition(success, function (msg) {
+        console.error(msg);
+      });
+    }
+  }, 2000);
 
   CONFIGURATION.locations = [
     {
